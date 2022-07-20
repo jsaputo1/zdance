@@ -138,10 +138,11 @@ add_action( 'widgets_init', 'zdance_widgets_init' );
  * Enqueue scripts and styles.
  */
 function zdance_scripts() {
-	wp_enqueue_style( 'zdance-style', get_stylesheet_uri(), array(), ZDANCE_VERSION );
-	wp_style_add_data( 'zdance-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'zdance-fonts', 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap"', array(), null );
+	wp_enqueue_style( 'zdance-styles', get_stylesheet_directory_uri() . '/css/styles.min.css', array(), ZDANCE_VERSION );
 
-	wp_enqueue_script( 'zdance-navigation', get_template_directory_uri() . '/js/navigation.js', array(), ZDANCE_VERSION, true );
+	wp_enqueue_script( 'zdance-bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array(), null, true );
+	wp_enqueue_script( 'zdance-theme', get_template_directory_uri() . '/js/zdance.js', array(), ZDANCE_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

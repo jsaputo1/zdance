@@ -163,3 +163,58 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+
+/**
+ * Renders the different components defined in ACF Flexible Content.
+ *
+ * @param mixed $post_id    The post ID or item to pass to ACF get.
+ *
+ * @return void
+ */
+function zdance_render_flexible_content( $post_id = null ) {
+	global $post;
+
+	if ( is_null( $post_id ) ) {
+		$post_id = $post->ID;
+	}
+
+	$template_path = get_template_directory();
+	$acf_path      = $template_path . '/inc/components/';
+
+	while ( have_rows( 'components', $post_id ) ) : the_row();
+		$layout_name = str_replace( '_', '-', get_row_layout() );
+
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG === true ) {
+			echo '<!-- ' . $acf_path . $layout_name . '.php -->'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+
+		include $acf_path . $layout_name . '.php';
+
+	endwhile;
+}
+
+/**
+ * Takes an ACF link field and returns a formatted button
+ * @param array  $link ACF link field or array of url, title, and target.
+ * @param string $classes A list of classes to apply to the button.
+ *
+ * @return void
+ */
+function zdance_acf_link_button( $link, $classes = 'btn-primary' ) {
+	if ( ! is_array( $link ) || false === $link ) {
+		return;
+	}
+
+	$target = isset( $link['target'] ) ? $link['target'] : false;
+
+	$o = '<a class="btn ' . esc_attr( $classes ) . '" ';
+	if ( '' !== $target && false !== $target ) {
+		$o .= 'target="' . esc_attr( $target ) . '" ';
+	}
+	$o .= 'href="' . esc_attr( $link['url'] ) . '">' . $link['title'];
+
+	$o .= '</a>';
+
+	echo $o; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
