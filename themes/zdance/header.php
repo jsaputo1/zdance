@@ -25,35 +25,50 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'zdance' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$zdance_description = get_bloginfo( 'description', 'display' );
-			if ( $zdance_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $zdance_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'zdance' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+	<header id="masthead" class="site-header">
+		<nav id="site-navigation" class="main-navigation navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'your-theme-slug' ); ?>">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="site-branding">
+					<?php if ( is_front_page() && is_home() ) : ?>
+						<h1 class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+								<?php the_custom_logo(); ?>
+								<span class="sr-only">
+									<?php bloginfo( 'name' ); ?>
+								</span>
+							</a>
+						</h1>
+						<?php else : ?>
+							<p class="site-title">
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+									<?php the_custom_logo(); ?>
+								</a>
+							</p>
+						<?php endif; ?>
+				</div><!-- .site-branding -->
+
+				<?php
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'primary',
+							'menu_id'         => 'primary',
+							'depth'           => 3, // 1 = no dropdowns, 2 = with dropdowns.
+							'container'       => 'div',
+							'container_class' => 'collapse navbar-collapse justify-content-center',
+							'container_id'    => 'primary-nav-menu',
+							'menu_class'      => 'navbar-nav ml-auto',
+							'dropdown_class'  => 'dropdown-menu-dark',
+							'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+							'walker'          => new WP_Bootstrap_Navwalker(),
+						)
+					);
+				?>
+			</div>
+		</nav>
 	</header><!-- #masthead -->

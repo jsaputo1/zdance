@@ -49,7 +49,8 @@ function zdance_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'zdance' ),
+			'primary' => esc_html__( 'Primary', 'zdance' ),
+			'footer'  => esc_html__( 'Footer', 'zdance' ),
 		)
 	);
 
@@ -151,11 +152,6 @@ function zdance_scripts() {
 add_action( 'wp_enqueue_scripts', 'zdance_scripts' );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -171,9 +167,25 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Bootstrap Navwalker
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
+require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 
+add_filter( 'nav_menu_link_attributes', 'prefix_bs5_dropdown_data_attribute', 20, 3 );
+/**
+ * Use namespaced data attribute for Bootstrap's dropdown toggles.
+ *
+ * @param array    $atts HTML attributes applied to the item's `<a>` element.
+ * @param WP_Post  $item The current menu item.
+ * @param stdClass $args An object of wp_nav_menu() arguments.
+ * @return array
+ */
+function prefix_bs5_dropdown_data_attribute( $atts, $item, $args ) {
+    if ( is_a( $args->walker, 'WP_Bootstrap_Navwalker' ) ) {
+        if ( array_key_exists( 'data-toggle', $atts ) ) {
+            unset( $atts['data-toggle'] );
+            $atts['data-bs-toggle'] = 'dropdown';
+        }
+    }
+    return $atts;
+}

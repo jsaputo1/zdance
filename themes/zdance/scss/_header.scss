@@ -1,0 +1,30 @@
+header {
+
+    #site-navigation {
+        .site-branding {
+            .site-title {
+                margin-bottom: 0;
+            }
+            .custom-logo {
+                max-height: 75px;
+                width: auto;
+            }
+        }
+        #primary-nav-menu {
+            .active {
+                color: $orange;
+                a {
+                    color: $orange;
+                }
+            }
+            .dropdown-menu-dark .dropdown-item:focus, .dropdown-menu-dark .dropdown-item:hover {
+                background-color: $orange;
+            }
+        }
+    }
+
+
+
+
+
+}

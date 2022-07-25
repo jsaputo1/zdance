@@ -7,6 +7,11 @@
 ==============================================================================*/
 $black: #000;
 $white: #fff;
+$orange: #e68547;
+
+$navbar-dark-active-color: $orange;
+
+$dropdown-link-hover-bg: $orange;
 
 // $primary:
 // $secondary:
@@ -43,6 +48,7 @@ $h4-font-size: $font-size-base;
 $h5-font-size: $font-size-base;
 $h6-font-size: $font-size-base;
 
+
 /*============================================================================
   Container Variables
 ==============================================================================*/
@@ -51,4 +57,10 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px)
+  xl: 1140px);
+
+/*============================================================================
+  Navbar Variables
+==============================================================================*/
+// $navbar-dark-active-color: $orange;
+$navbar-dark-color: $white;
