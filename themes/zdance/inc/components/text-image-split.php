@@ -21,10 +21,10 @@ $index = get_row_index();
 				<h2><?php the_sub_field( 'title' ); ?></h2>
 			</div>
 		<?php endif; ?>
-		<div class="col-md-6 text<?php echo ( ! get_sub_field( 'text_first' ) ) ? esc_attr( ' order-md-last' ) : ''; ?>">
+		<div class="col-lg-6 text<?php echo ( ! get_sub_field( 'text_first' ) ) ? esc_attr( ' order-md-last' ) : ''; ?>">
 			<?php the_sub_field( 'content' ); ?>
 		</div>
-		<div class="col-md-6 image">
+		<div class="col-lg-6 image">
 			<?php echo wp_get_attachment_image( get_sub_field( 'image' ), 'full' ); ?>
 		</div>
 	</div>
