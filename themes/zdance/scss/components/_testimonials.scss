@@ -1,0 +1,34 @@
+.component-testimonials {
+    .wrapper {
+        // background-color: $white;
+        border: 2px solid $orange;
+        padding: 20px 15px;
+        .caption {
+            position: relative;
+            color: $gray-600;
+            padding-left: 45px;
+            padding-top: 10px;
+            &::before {
+                content: '';
+                background-image: url('../images/quote-left-solid.svg');
+                background-repeat: no-repeat;
+                width: 35px;
+                height: 35px;
+                position: absolute;
+                top: -2px;
+                left: 0px;
+            }
+        }
+        .name {
+            color: $black;
+            padding-left: 45px;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        span {
+            color: $orange;
+            padding-left: 45px;
+            font-size: 0.85rem;
+        }
+    }
+}
