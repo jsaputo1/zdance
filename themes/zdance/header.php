@@ -30,7 +30,7 @@
 	<header id="masthead" class="site-header">
 		<nav id="site-navigation" class="main-navigation navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'your-theme-slug' ); ?>">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primary-nav-menu" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'zdance' ); ?>">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
@@ -60,7 +60,7 @@
 							'menu_id'         => 'primary',
 							'depth'           => 3, // 1 = no dropdowns, 2 = with dropdowns.
 							'container'       => 'div',
-							'container_class' => 'collapse navbar-collapse justify-content-center',
+							'container_class' => 'collapse navbar-collapse justify-content-end',
 							'container_id'    => 'primary-nav-menu',
 							'menu_class'      => 'navbar-nav ml-auto',
 							'dropdown_class'  => 'dropdown-menu-dark',
