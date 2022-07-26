@@ -12,19 +12,26 @@ header {
         }
         #primary-nav-menu {
             .active {
-                color: $orange;
-                a {
+                .nav-link {
                     color: $orange;
+
                 }
             }
             .dropdown-menu-dark .dropdown-item:focus, .dropdown-menu-dark .dropdown-item:hover {
                 background-color: $orange;
             }
+            .dropdown-menu-dark {
+                background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity));
+                .active {
+                    .dropdown-item {
+                        color: $orange;
+                        &:hover {
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
         }
     }
-
-
-
-
 
 }
