@@ -1,0 +1,20 @@
+.site-footer {
+	margin-top: 150px;
+    .social-links {
+        a {
+            text-decoration: none;
+        }
+        @include media-breakpoint-down(lg) {
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+        a {
+            padding: 0 8px;
+        }
+        @include media-breakpoint-down(md) {
+            width: 100%;
+        }
+    }
+}
+

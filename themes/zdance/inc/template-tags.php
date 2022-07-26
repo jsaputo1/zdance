@@ -218,3 +218,64 @@ function zdance_acf_link_button( $link, $classes = 'btn-primary' ) {
 
 	echo $o; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
+
+/**
+ * Output the social icons with links.
+ *
+ * @return void
+ */
+function zdance_the_social_links() {
+	$theme = get_theme_mods();
+
+	?>
+		<div class="social-icons">
+	<?php
+
+	if ( isset( $theme['zdance_facebook'] ) && $theme['zdance_facebook'] !== '' ) :
+	?>
+		<a href="<?php echo esc_url( $theme['zdance_facebook'] ); ?>" rel="noopener nofollow">
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/icon-facebook.svg' ); ?>" alt="Facebook logo" />
+		</a>
+	<?php
+	endif;
+
+	if ( isset( $theme['zdance_twitter'] ) && $theme['zdance_twitter'] !== '' ) :
+	?>
+		<a href="<?php echo esc_url( $theme['zdance_twitter'] ); ?>" rel="noopener nofollow">
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/icon-twitter.svg' ); ?>" alt="Twitter logo" />
+		</a>
+	<?php
+	endif;
+
+	if ( isset( $theme['zdance_linkedin'] ) && $theme['zdance_linkedin'] !== '' ) :
+	?>
+		<a href="<?php echo esc_url( $theme['zdance_linkedin'] ); ?>" rel="noopener nofollow">
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/icon-linkedin.svg' ); ?>" alt="LinkedIn logo" />
+		</a>
+	<?php
+	endif;
+
+	if ( isset( $theme['zdance_instagram'] ) && $theme['zdance_instagram'] !== '' ) :
+	?>
+		<a href="<?php echo esc_url( $theme['zdance_instagram'] ); ?>" rel="noopener nofollow">
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/icon-instagram.svg' ); ?>" alt="Instagram logo" />
+		</a>
+	<?php
+	endif;
+
+	if ( isset( $theme['zdance_youtube'] ) && $theme['zdance_youtube'] !== '' ) :
+	?>
+		<a href="<?php echo esc_url( $theme['zdance_youtube'] ); ?>" rel="noopener nofollow">
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/images/icon-youtube.png' ); ?>" alt="YouTube logo" />
+		</a>
+	<?php
+	endif;
+
+	if ( isset( $theme['zdance_blog'] ) && $theme['zdance_blog'] !== '' ) :
+		?>
+			<a href="<?php echo esc_url( $theme['zdance_blog'] ); ?>" rel="noopener nofollow">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/images/icon-blog.svg' ); ?>" alt="Blog icon" />
+			</a>
+		<?php
+		endif;
+}

@@ -11,26 +11,67 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function zdance_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-	if ( isset( $wp_customize->selective_refresh ) ) {
-		$wp_customize->selective_refresh->add_partial(
-			'blogname',
-			array(
-				'selector'        => '.site-title a',
-				'render_callback' => 'zdance_customize_partial_blogname',
-			)
-		);
-		$wp_customize->selective_refresh->add_partial(
-			'blogdescription',
-			array(
-				'selector'        => '.site-description',
-				'render_callback' => 'zdance_customize_partial_blogdescription',
-			)
-		);
-	}
+	$wp_customize->add_section(
+		'zdance_social',
+		array(
+			'title'    => 'Social Links',
+			'priority' => 119,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zdance_facebook',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_url',
+		)
+	);
+
+	$wp_customize->add_control(
+		'zdance_facebook',
+		array(
+			'type'    => 'url',
+			'section' => 'zdance_social',
+			'label'   => __( 'Facebook', 'zdance' ),
+		)
+	);
+
+
+	$wp_customize->add_setting(
+		'zdance_instagram',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_url',
+		)
+	);
+
+	$wp_customize->add_control(
+		'zdance_instagram',
+		array(
+			'type'    => 'url',
+			'section' => 'zdance_social',
+			'label'   => __( 'Instagram', 'zdance' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zdance_youtube',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_url',
+		)
+	);
+
+	$wp_customize->add_control(
+		'zdance_youtube',
+		array(
+			'type'    => 'url',
+			'section' => 'zdance_social',
+			'label'   => __( 'YouTube', 'zdance' ),
+		)
+	);
+
 }
 add_action( 'customize_register', 'zdance_customize_register' );
 
@@ -56,6 +97,6 @@ function zdance_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function zdance_customize_preview_js() {
-	wp_enqueue_script( 'zdance-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
+	wp_enqueue_script( 'zdance-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), ZDANCE_VERSION, true );
 }
 add_action( 'customize_preview_init', 'zdance_customize_preview_js' );
