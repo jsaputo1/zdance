@@ -57,6 +57,7 @@ Thumbs.db
 
 /plugins/redis-cache
 /plugins/query-monitor
+/plugins/duplicator
 
 /themes/index.php
 /themes/twenty*
