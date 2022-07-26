@@ -1,0 +1,38 @@
+.component-accordion {
+	.accordion-item {
+		.accordion-header {
+			// .accordion-title {
+				.accordion-button {
+					border:none;
+					background-color:transparent;
+					outline:none;
+					padding-left: 0;
+					width: 100%;
+					border-top: 5px solid #D1D1D1;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					img {
+						transition: transform 125ms ease-in-out;
+						margin-right: 25px;
+					}
+					&.collapsed {
+						img {
+							transform: rotate(180deg);
+						}
+					}
+					h3 {
+						padding: 20px 0;
+						margin: 0;
+					}
+				}
+			// }
+		}
+		.accordion-body {
+			padding-bottom: 30px;
+		}
+		&:last-child {
+			border-bottom: 5px solid #D1D1D1;
+		}
+	}
+}
