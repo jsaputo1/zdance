@@ -1,0 +1,25 @@
+.component-hero {
+    height: 500px;
+    .wrapper {
+        height: 100%;
+        background-position: center;
+        @include media-breakpoint-down(md) {
+            background-size: cover;
+        }
+        .text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            h1 {
+                color: $white;
+                @include media-breakpoint-up(lg) {
+                    font-size: 5rem;
+                }
+                @include media-breakpoint-down(md) {
+                    padding: 0 25px;
+                }
+            }
+        }
+    }
+}
