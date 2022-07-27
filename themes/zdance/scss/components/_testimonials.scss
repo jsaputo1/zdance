@@ -3,11 +3,16 @@
         // background-color: $white;
         border: 2px solid $orange;
         padding: 20px 15px;
+        height: fit-content;
+        background-color: #edc4a61c;
+        border-radius: 20px;
         .caption {
             position: relative;
             color: $gray-600;
-            padding-left: 45px;
-            padding-top: 10px;
+            padding: 10px 45px;
+            font-size: 14px;
+            // padding-left: 45px;
+            // padding-top: 10px;
             &::before {
                 content: '';
                 background-image: url('../images/quote-left-solid.svg');
@@ -17,6 +22,16 @@
                 position: absolute;
                 top: -2px;
                 left: 0px;
+            }
+            &::after {
+                content: '';
+                background-image: url('../images/quote-right-solid.svg');
+                background-repeat: no-repeat;
+                width: 35px;
+                height: 35px;
+                position: absolute;
+                bottom: -5px;
+                right: 0;
             }
         }
         .name {
@@ -31,4 +46,51 @@
             font-size: 0.85rem;
         }
     }
+    .slick-prev::before, .slick-next::before {
+        color: $orange;
+        font-size: 50px;
+        opacity: 0.9;
+    }
+    .slick-slide {
+        > div {
+            > div {
+                display: flex !important;
+                justify-content: center !important;
+            }
+        }
+    }
+    .slick-next {
+        @include media-breakpoint-up(lg) {
+            right: 250px;
+        }
+        @include media-breakpoint-up(md) {
+            right: 220px;
+        }
+        @include media-breakpoint-down(lg) {
+            right: 75px;
+            bottom: -20px;
+        }
+    }
+    .slick-prev {
+        @include media-breakpoint-up(lg) {
+            left: 220px;
+        }
+        @include media-breakpoint-up(md) {
+            left: 190px;
+        }
+        @include media-breakpoint-down(lg) {
+            left: 50px;
+            bottom: -20px;
+        }
+        
+    }
+    .slick-prev, .slick-next {
+        @include media-breakpoint-down(lg) {
+            top: unset;
+        }
+    }
+    .slick-dots li button::before {
+        font-size: 18px;
+    }
+
 }
