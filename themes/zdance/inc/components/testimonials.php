@@ -17,7 +17,7 @@ $index = get_row_index();
 ?>
 <div class="component component-testimonials" id="<?php echo esc_attr( 'section-id-' . $index ); ?>">
     <?php if ( get_sub_field( 'title') ) : ?>
-        <h2><?php the_sub_field( 'title' ); ?></h2>
+        <h2 class="text-center"><?php the_sub_field( 'title' ); ?></h2>
     <?php endif; ?>
 	<div class="row">
         <div class="testimonial-slick">
