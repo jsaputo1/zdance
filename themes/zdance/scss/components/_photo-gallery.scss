@@ -1,0 +1,53 @@
+.component-photo-gallery {
+    .wrapper {
+        .image-wrapper {
+            width: 275px;
+            height: 275px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+            }
+            margin-bottom: 30px;
+        }
+    }
+
+    #galleryModal {
+        background-color: rgba(0, 0, 0, .6);
+        .modal-content {
+            background-color: transparent;
+            border: none;
+        }
+        .modal-body {
+            height: 75vh;
+        }
+        .photo-gallery-modal-wrapper {
+            // height: 90%;
+            // display: flex;
+            // align-items: center;
+            .photo-gallery-slick {
+                // height: 100%;
+            }
+        }
+        .slick-slide  {
+            > div {
+                > div {
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                }
+            }
+            img {
+                // width: 100%;
+                object-fit: contain;
+                max-height: 70vh;
+                max-width: 75vw;
+            }
+        }
+    }
+    .slick-prev::before, .slick-next::before {
+        font-size: 40px;
+        opacity: 0.9;
+    }
+}
