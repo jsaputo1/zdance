@@ -1,0 +1,13 @@
+.component-three-column-row {
+    .wrapper {
+        .image {
+            width: 365px;
+            height: 290px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
